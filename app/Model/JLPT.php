@@ -17,6 +17,6 @@ class JLPT extends Model
     ];
 
     public function kanji(){
-        return $this->hasMany('App\Model\Kanji');
+        return $this->hasMany('App\Model\Kanji','jlpt_id');
     }
 }

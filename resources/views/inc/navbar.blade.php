@@ -16,7 +16,7 @@
                                     <ul class="main_nav">
                                         {{-- <li class="active"><a href="index.html">Home</a></li> --}}
                                         <li><a href="/search">Search</a></li>
-                                        <li><a href="/menu_course">Course</a></li>
+                                        <li><a href="/course">Course</a></li>
                                         <li><a href="/quiz">Quiz</a></li>
                                         {{-- <li><a href="/blog">Blog</a></li> --}}
                                         {{-- <li><a href="/contact">Contact</a></li> --}}
@@ -40,9 +40,11 @@
 
                                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
 
-                                                    @if(Auth::user()->status == 1)
+                                                    @if(Auth::user()->status == 2)
                                                         <a href="/admin/makeKanji" class="dropdown-item">Insert New Kanji</a>
                                                         <a href="/admin/makeKana" class="dropdown-item">Insert New Kana</a>
+                                                        <a href="/admin/makeGrammar" class="dropdown-item">Insert New Grammar</a>
+                                                        <a href="/admin/makeKosaKata" class="dropdown-item">Insert New Kosa Kata</a>
                                                         <a href="/admin/user" class="dropdown-item">User Menu</a>
                                                     @endif
 

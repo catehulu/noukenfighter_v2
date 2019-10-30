@@ -29,22 +29,29 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/search', 'PagesController@search');
     Route::get('/course', 'PagesController@course');
     Route::get('/subscribe', 'PagesController@subscribe');
-    Route::get('/menu_course', 'PagesController@menu_course');
     
     Route::get('/search/N{K_JLPT}', 'JLPTController@searchJLPT');
     Route::get('/search/J{K_Jouyou}', 'JoyouController@searchJouyou');
     Route::get('/search/{KN_Tipe}', 'KanaController@searchKana');
     
-    Route::get('/course/N{K_JLPT}', 'JLPTController@courseJLPT');
-    Route::get('/course/{KN_Tipe}', 'JoyouController@courseKana');
-    Route::get('/course/Kana/{ID_Kana}', 'KanaController@accessKana');
-    Route::get('/course/Kanji/{ID_K_Increment}', 'KanjiController@accessKanji');
+    //INDEX PERCOURSE
+    Route::get('/course/kanji/N{jlpt}', 'JLPTController@kanjiIndex');
+    Route::get('/course/kosakata/N{jlpt}', 'JLPTController@kosakataIndex');
+    Route::get('/course/grammar/N{jlpt}', 'JLPTController@grammarIndex');
+    Route::get('/course/kana/{KN_Tipe}', 'KanaController@index');
+
+    //SHOW PER ITEM
+    Route::get('/course/kana/detail/{kana}', 'KanaController@show');
+    Route::get('/course/kanji/detail/{kanji}', 'KanjiController@show');
+    Route::get('/course/grammar/detail/{grammar}', 'GrammarController@show');
+    Route::get('/course/kosakata/detail/{kosaKata}', 'KosaKataController@show');
     
     Route::get('/quiz/attempt/N{K_JLPT}', 'QuizController@quizJLPT');
     Route::get('/quiz/attempt/{KN_Tipe}', 'QuizController@quizKana');
     Route::get('/quiz/result/N{K_JLPT}', 'QuizController@resultJLPT');
     Route::get('/quiz/result/{KN_Tipe}', 'QuizController@resultKana');
     
+    // Routingan Admin
     Route::group(['middleware' => ['admin']], function () {
         Route::group(['prefix' => 'admin'], function () {
 
@@ -72,7 +79,7 @@ Route::group(['middleware' => ['auth']], function () {
             //CRUD KosaKata
             Route::get('/makeKosaKata', 'KosaKataController@create');
             Route::post('/createKosaKata', 'KosaKataController@store');
-            Route::get('/eKosaKata/{kosakata}', 'KosaKataController@edit');
+            Route::get('/eKosaKata/{kosaKata}', 'KosaKataController@edit');
             Route::post('/editKosaKata/{kosaKata}', 'KosaKataController@update');
             Route::get('/deleteKosaKata/{kosaKata}', 'KosaKataController@destroy');
 

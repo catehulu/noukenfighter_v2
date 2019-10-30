@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Model\Grammar;
 use App\Model\JLPT;
+use App\Model\KosaKata;
 use Illuminate\Http\Request;
 
 class JLPTController extends Controller
@@ -81,5 +83,44 @@ class JLPTController extends Controller
     public function destroy(JLPT $jLPT)
     {
         //
+    }
+
+    /**
+     * Return the listing of certain JLPT kanjis.
+     *
+     * @param  integer jlpt
+     * @return \Illuminate\Http\Response
+     */
+    public function kanjiIndex($jlpt)
+    {
+        $kanjis = JLPT::find($jlpt)->kanji()->get();
+        // dd($kanjis);
+        return view('pages.kanji_course',compact('kanjis','jlpt'));
+    }
+
+    /**
+     * Return the listing of certain JLPT kanjis.
+     *
+     * @param  integer jlpt
+     * @return \Illuminate\Http\Response
+     */
+    public function grammarIndex($jlpt)
+    {
+        $grammars = Grammar::all();
+        // dd($grammars);
+        return view('pages.grammar_course',compact('grammars','jlpt'));
+    }
+
+    /**
+     * Return the listing of certain JLPT kanjis.
+     *
+     * @param  integer jlpt
+     * @return \Illuminate\Http\Response
+     */
+    public function kosakataIndex($jlpt)
+    {
+        $kosakatas = KosaKata::all();
+        // dd($kosakatas);
+        return view('pages.kosakata_course',compact('kosakatas','jlpt'));
     }
 }

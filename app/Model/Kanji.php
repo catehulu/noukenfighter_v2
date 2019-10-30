@@ -21,10 +21,10 @@ class Kanji extends Model
     ];
 
     public function jlpt(){
-        return $this->hasOne('App\Model\JLPT');
+        return $this->belongsTo('App\Model\JLPT');
     }
 
     public function jouyou(){
-        return $this->hasOne('App\Model\Jouyou');
+        return $this->belongsTo('App\Model\Jouyou');
     }
 }

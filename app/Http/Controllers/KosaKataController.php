@@ -52,7 +52,7 @@ class KosaKataController extends Controller
      */
     public function show(KosaKata $kosaKata)
     {
-        //
+        return view('pages.showcourse_kosakata',compact('kosaKata'));
     }
 
     /**
@@ -91,6 +91,7 @@ class KosaKataController extends Controller
      */
     public function destroy(KosaKata $kosaKata)
     {
+        dd($kosaKata);
         $kosaKata->delete();
         return redirect()->back()->with('success', 'Kosa Kata berhasil dihapus');
     }

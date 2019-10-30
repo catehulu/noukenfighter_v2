@@ -3,7 +3,7 @@
 @section('content')
     @if ($kana)
         <h2>Edit Kana</h2>
-        <form action="/admin/editKana/{{$kana}}" method="post">
+        <form action="/admin/editKana/{{$kana->id}}" method="post">
             @csrf
             <div class="form-group">
                 <label for="kana">Kana:</label>

@@ -3,7 +3,7 @@
 @section('content')
     <h2>Edit Kanji</h2>
     @if($kanji)
-        <form action="/admin/editKanji/{{$kanji}}" method="post">
+        <form action="/admin/editKanji/{{$kanji->id}}" method="post">
             @csrf
             <div class="form-group">
                 <label for="ID_Kanji">ID Kanji:</label>
@@ -51,7 +51,6 @@
             </div>
             <button type="submit" class="btn btn-default">Submit</button>
         </form>
-        @endforeach
     @else
         <h3>No Kanji Found</h3>
     @endif

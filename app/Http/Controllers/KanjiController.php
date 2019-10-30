@@ -60,7 +60,8 @@ class KanjiController extends Controller
      */
     public function show(Kanji $kanji)
     {
-        //
+        // dd($kanji);
+        return view('pages.showcourse_kanji',compact('kanji'));
     }
 
     /**

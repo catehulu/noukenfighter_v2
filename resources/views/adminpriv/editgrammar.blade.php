@@ -3,7 +3,7 @@
 @section('content')
     @if ($grammar)
         <h2>Edit Grammar</h2>
-        <form action="/admin/editGrammar/{{$grammar}}" method="post">
+        <form action="/admin/editGrammar/{{$grammar->id}}" method="post">
             @csrf
             <div class="form-group">
                 <label for="judul_grammar">Judul:</label>

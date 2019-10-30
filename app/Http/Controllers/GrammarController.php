@@ -53,7 +53,7 @@ class GrammarController extends Controller
      */
     public function show(Grammar $grammar)
     {
-        //
+        return view('pages.showcourse_grammar',compact('grammar'));
     }
 
     /**

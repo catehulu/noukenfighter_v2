@@ -9,12 +9,16 @@ class KanaController extends Controller
 {
     /**
      * Display a listing of the resource.
-     *
+     * @param @string KN_Tipe
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($KN_Tipe)
     {
-        //
+        $kanas = Kana::where('tipe',$KN_Tipe)->get();
+        if ($kanas->count() == 0) {
+            return redirect('/course')->with('error','Kana tidak ditemukan');
+        }
+        return view('pages.kana_course',compact('kanas'));
     }
 
     /**
@@ -52,7 +56,7 @@ class KanaController extends Controller
      */
     public function show(Kana $kana)
     {
-        //
+        return view('pages.showcourse_kana',compact('kana'));
     }
 
     /**

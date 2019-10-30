@@ -18,6 +18,7 @@ class CreateKosaKatasTable extends Migration
             $table->string('jp_vocab',100);
             $table->string('eng_vocab',100);
             $table->string('contoh_kalimat',300)->nullable();
+            $table->integer('jlpt_id')->nullable();
             $table->timestamps();
         });
     }

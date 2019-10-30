@@ -18,7 +18,8 @@ class CreateGrammarsTable extends Migration
             $table->string('judul_grammar',100);
             $table->string('arti_grammar',100);
             $table->string('formula_grammar',300);
-            $table->string('contoh_grammar',300)->nullable();
+            $table->string('contoh_kalimat',300)->nullable();
+            $table->integer('jlpt_id')->nullable();
             $table->timestamps();
         });
     }
