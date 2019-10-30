@@ -2,7 +2,8 @@
 
 @section('content')
     <h2>Insert Kana</h2>
-    <form action="/admin/createKana" method="GET">
+    <form action="/admin/createKana" method="post">
+        @csrf
         <div class="form-group">
             <label for="KN_Kana">Kana:</label>
             <input type="text" class="form-control" id="KN_Kana" placeholder="KN_Kana" name="KN_Kana" required>
