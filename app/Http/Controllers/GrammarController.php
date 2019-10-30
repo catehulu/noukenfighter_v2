@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Model\DataPembelajaran;
 use App\Model\Grammar;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class GrammarController extends Controller
 {
@@ -53,6 +55,15 @@ class GrammarController extends Controller
      */
     public function show(Grammar $grammar)
     {
+        $data_pembelajaran = DataPembelajaran::where('user_id',Auth::user()->id)->first();
+        $array_grammar = explode(',',$data_pembelajaran->grammar_data);
+        if (!in_array($grammar->id,$array_grammar)) {
+
+            array_push($array_grammar,$grammar->id);
+            $string_grammar = implode(',',$array_grammar);
+            $data_pembelajaran->grammar_data = $string_grammar;
+            $data_pembelajaran->save();
+        }
         return view('pages.showcourse_grammar',compact('grammar'));
     }
 

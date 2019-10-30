@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
+use App\Model\DataPembelajaran;
 use App\Model\Kanji;
+use App\Model\SRS;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class KanjiController extends Controller
@@ -61,6 +65,28 @@ class KanjiController extends Controller
     public function show(Kanji $kanji)
     {
         // dd($kanji);
+        $data_pembelajaran = DataPembelajaran::where('user_id',Auth::user()->id)->first();
+        $data_srs = $data_pembelajaran->srs()->pluck('kanji_id')->toArray();
+        if (!in_array($kanji->id,$data_srs)) {
+            $srs = new SRS();
+            $srs->data_pembelajaran_id = $data_pembelajaran->id;
+            $srs->kanji_id = $kanji->id;
+            $srs->penambah = 0;
+            $srs->waktu_review = Carbon::now();
+            $srs->save();
+
+            $array_srs = explode(',',$data_pembelajaran->srs_data);
+            array_push($array_srs,$srs->id);
+            $string_srs = implode(',',$array_srs);
+            $data_pembelajaran->srs_data = $string_srs;
+            $data_pembelajaran->save();
+        }
+        else{
+
+            $srs = SRS::where('data_pembelajaran_id',$data_pembelajaran->id)->where('kanji_id',$kanji->id)->first();
+            $srs->waktu_review = Carbon::now();
+            $srs->save();
+        }
         return view('pages.showcourse_kanji',compact('kanji'));
     }
 

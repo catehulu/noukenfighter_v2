@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Model\DataPembelajaran;
 use App\Model\KosaKata;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class KosaKataController extends Controller
 {
@@ -52,6 +54,16 @@ class KosaKataController extends Controller
      */
     public function show(KosaKata $kosaKata)
     {
+        $data_pembelajaran = DataPembelajaran::where('user_id',Auth::user()->id)->first();
+        $array_kosakata = explode(',',$data_pembelajaran->kosa_kata_data);
+        if (!in_array($kosaKata->id,$array_kosakata)) {
+
+            array_push($array_kosakata,$kosaKata->id);
+            $string_kosakata = implode(',',$array_kosakata);
+            $data_pembelajaran->kosa_kata_data = $string_kosakata;
+            $data_pembelajaran->save();
+        }
+
         return view('pages.showcourse_kosakata',compact('kosaKata'));
     }
 
