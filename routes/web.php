@@ -45,11 +45,16 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/course/kanji/detail/{kanji}', 'KanjiController@show');
     Route::get('/course/grammar/detail/{grammar}', 'GrammarController@show');
     Route::get('/course/kosakata/detail/{kosaKata}', 'KosaKataController@show');
-    
-    Route::get('/quiz/attempt/N{K_JLPT}', 'QuizController@quizJLPT');
-    Route::get('/quiz/attempt/{KN_Tipe}', 'QuizController@quizKana');
-    Route::get('/quiz/result/N{K_JLPT}', 'QuizController@resultJLPT');
-    Route::get('/quiz/result/{KN_Tipe}', 'QuizController@resultKana');
+
+
+    //QUIZZES
+    Route::get('/quiz/attempt/kanji/N{jlpt}', 'QuizController@quizKanji');
+    Route::get('/quiz/attempt/kana/{KN_Tipe}', 'QuizController@quizKana');
+    Route::get('/quiz/attempt/grammar/N{jlpt}', 'QuizController@quizGrammar');
+    Route::get('/quiz/attempt/kosakata/N{jlpt}', 'QuizController@quizKosaKata');
+
+    //RESULTS
+    Route::post('/quiz/result', 'QuizController@result');
     
     // Routingan Admin
     Route::group(['middleware' => ['admin']], function () {

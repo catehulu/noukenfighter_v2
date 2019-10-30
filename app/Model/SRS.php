@@ -24,7 +24,7 @@ class SRS extends Model
     ];
 
     public function kanji(){
-        return $this->belongsTo('App\Model\SRS');
+        return $this->belongsTo('App\Model\Kanji');
     }
 
     public function data_pembelajaran(){

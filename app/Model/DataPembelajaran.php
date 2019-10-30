@@ -25,4 +25,8 @@ class DataPembelajaran extends Model
     public function srs(){
         return $this->hasMany('App\Model\SRS');
     }
+
+    public function kanji(){
+        return $this->hasManyThrough('App\Model\Kanji','App\Model\SRS');
+    }
 }

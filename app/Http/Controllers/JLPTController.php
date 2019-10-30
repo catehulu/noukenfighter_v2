@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Model\DataPembelajaran;
 use App\Model\Grammar;
 use App\Model\JLPT;
+use App\Model\Kanji;
 use App\Model\KosaKata;
+use App\Model\Quiz;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class JLPTController extends Controller
 {
