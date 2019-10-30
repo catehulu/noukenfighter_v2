@@ -17,6 +17,7 @@ class CreateJouyousTable extends Migration
             $table->bigIncrements('id');
             $table->string('jouyou_level',10);
             $table->string('keterangan',50);
+            $table->timestamps();
         });
     }
 

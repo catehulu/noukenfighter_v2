@@ -9,6 +9,10 @@ class PagesController extends Controller
     public function home(){
         return view('pages.home');
     }
+    public function course()
+    {
+        return view('pages.course');
+    }
 
     public function menu_course(){
         return view('sementara.courses');
@@ -24,5 +28,10 @@ class PagesController extends Controller
 
     public function subscribe(){
         return view('pages.subscribe');
+    }
+
+    public function search()
+    {
+        return view('pages.search');
     }
 }

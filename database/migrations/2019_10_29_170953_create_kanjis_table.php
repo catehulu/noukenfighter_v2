@@ -15,18 +15,18 @@ class CreateKanjisTable extends Migration
     {
         Schema::create('kanjis', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->timestamps();
-            $table->integer('jlpt_id');
+            $table->integer('jlpt_id')->nullable();
             $table->integer('jouyou_id')->nullable();
             $table->string('keyword',30);
             $table->string('kanji',5);
             $table->string('stroke_diagram',100)->nullable();
-            $table->string('constituent',100);
-            $table->integer('stroke_count');
-            $table->integer('lesson_no');
+            $table->string('constituent',1000)->nullable();
+            $table->integer('stroke_count')->nullable();
+            $table->integer('lesson_no')->nullable();
             $table->string('story',1000)->nullable();
-            $table->string('on_yomi',50);
-            $table->string('kun_yomi',50);
+            $table->string('on_yomi',100)->nullable();
+            $table->string('kun_yomi',100)->nullable();
+            $table->timestamps();
         });
     }
 

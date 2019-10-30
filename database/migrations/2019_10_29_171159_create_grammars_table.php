@@ -15,11 +15,11 @@ class CreateGrammarsTable extends Migration
     {
         Schema::create('grammars', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->timestamps();
             $table->string('judul_grammar',100);
             $table->string('arti_grammar',100);
             $table->string('formula_grammar',300);
             $table->string('contoh_grammar',300)->nullable();
+            $table->timestamps();
         });
     }
 

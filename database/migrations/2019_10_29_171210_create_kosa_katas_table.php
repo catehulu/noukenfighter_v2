@@ -15,10 +15,10 @@ class CreateKosaKatasTable extends Migration
     {
         Schema::create('kosa_katas', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->timestamps();
             $table->string('jp_vocab',100);
             $table->string('eng_vocab',100);
             $table->string('contoh_kalimat',300)->nullable();
+            $table->timestamps();
         });
     }
 

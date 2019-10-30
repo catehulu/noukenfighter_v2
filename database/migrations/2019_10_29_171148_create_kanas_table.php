@@ -18,6 +18,7 @@ class CreateKanasTable extends Migration
             $table->string('kana',5);
             $table->string('reading',10);
             $table->string('tipe',15);
+            $table->timestamps();
         });
     }
 

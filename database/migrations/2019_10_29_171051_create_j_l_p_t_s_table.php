@@ -17,6 +17,7 @@ class CreateJLPTSTable extends Migration
             $table->bigIncrements('id');
             $table->string('jlpt_level',3);
             $table->string('keterangan',50);
+            $table->timestamps();
         });
     }
 
