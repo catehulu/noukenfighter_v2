@@ -11,6 +11,10 @@
 |
 */
 
+Route::get('test', function () {
+    return view('admin_lte.blank');
+});
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -55,6 +59,7 @@ Route::group(['middleware' => ['auth']], function () {
 
     //RESULTS
     Route::post('/quiz/result', 'QuizController@result');
+    Route::get('/report', 'DataPembelajaranController@index');
     
     // Routingan Admin
     Route::group(['middleware' => ['admin']], function () {

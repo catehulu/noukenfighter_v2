@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Model\DataPembelajaran;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class DataPembelajaranController extends Controller
 {
@@ -14,7 +15,9 @@ class DataPembelajaranController extends Controller
      */
     public function index()
     {
-        //
+        $dataPembelajaran = DataPembelajaran::where('user_id',Auth::user()->id)->with('quiz')->first();
+        return view('pages.laporan',compact('dataPembelajaran'));
+
     }
 
     /**
