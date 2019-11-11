@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <form action="/course/{{$kana->tipe}}">
+    <form action="/course/kana/{{$kana->tipe}}">
     <input type="submit" value="Go Back" class="btn btn-danger">
     </form>
     <table class="table table-bordered">

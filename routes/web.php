@@ -24,7 +24,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/', 'PagesController@home');
-Route::get('/blog', 'PagesController@blog');
+Route::get('/faq', 'PagesController@faq');
+Route::get('/about', 'PagesController@about');
 Route::get('/contact', 'PagesController@contact');
 
 Route::group(['middleware' => ['auth']], function () {
@@ -33,11 +34,11 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/search', 'PagesController@search');
     Route::get('/course', 'PagesController@course');
     Route::get('/subscribe', 'PagesController@subscribe');
-    
+
     Route::get('/search/N{K_JLPT}', 'JLPTController@searchJLPT');
     Route::get('/search/J{K_Jouyou}', 'JoyouController@searchJouyou');
     Route::get('/search/{KN_Tipe}', 'KanaController@searchKana');
-    
+
     //INDEX PERCOURSE
     Route::get('/course/kanji/N{jlpt}', 'JLPTController@kanjiIndex');
     Route::get('/course/kosakata/N{jlpt}', 'JLPTController@kosakataIndex');
@@ -60,7 +61,7 @@ Route::group(['middleware' => ['auth']], function () {
     //RESULTS
     Route::post('/quiz/result', 'QuizController@result');
     Route::get('/report', 'DataPembelajaranController@index');
-    
+
     // Routingan Admin
     Route::group(['middleware' => ['admin']], function () {
         Route::group(['prefix' => 'admin'], function () {
@@ -71,14 +72,14 @@ Route::group(['middleware' => ['auth']], function () {
             Route::get('/eKanji/{kanji}', 'KanjiController@edit');
             Route::post('/editKanji/{kanji}', 'KanjiController@update');
             Route::get('/deleteKanji/{kanji}', 'KanjiController@destroy');
-            
+
             //CRUD Kana
             Route::get('/makeKana', 'KanaController@create');
             Route::post('/createKana', 'KanaController@store');
             Route::get('/eKana/{kana}', 'KanaController@edit');
             Route::post('/editKana/{kana}', 'KanaController@update');
             Route::get('/deleteKana/{kana}', 'KanaController@destroy');
-            
+
             //CRUD Grammar
             Route::get('/makeGrammar', 'GrammarController@create');
             Route::post('/createGrammar', 'GrammarController@store');
@@ -92,10 +93,6 @@ Route::group(['middleware' => ['auth']], function () {
             Route::get('/eKosaKata/{kosaKata}', 'KosaKataController@edit');
             Route::post('/editKosaKata/{kosaKata}', 'KosaKataController@update');
             Route::get('/deleteKosaKata/{kosaKata}', 'KosaKataController@destroy');
-
         });
     });
-
 });
-
-

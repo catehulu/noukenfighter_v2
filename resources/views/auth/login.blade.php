@@ -1,7 +1,18 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<section class="bannerPart">
+    <img src="{{ asset('img/banner_logo.png') }}">
+    <img id="logo" src="{{ asset('img/noukenfighter_logo.png') }}" alt="" srcset="">
+    <img id="cloudTop" src="{{ asset('img/cloud_position_up.png') }}" alt="" srcset="">
+    {{-- <img id="cloudBottom" src="{{ asset('img/cloud_position_down.png') }}" alt="" srcset=""> --}}
+    <div class="row">
+        <div id="bannerTitle" class="text-center col-12">
+            <h1 class="font-weight-bolder">LOGIN</h1>
+        </div>
+    </div>
+</section>
+<div class="container" style="margin-top: 100px; margin-bottom: 100px">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
