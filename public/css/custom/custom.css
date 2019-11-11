@@ -1,0 +1,203 @@
+/* @media only screen and (max-width: 500px) {
+    .bannerPart > #bannerButton {
+        display: block;
+        position: absolute;
+        width: 100%;
+        height: auto;
+        top: 100%;
+        left: 35%;
+    }
+} */
+
+footer {
+    position: relative;
+    margin-top: 200px;
+}
+
+footer #footerGreyPart {
+    margin-top: 50px;
+}
+
+section:not(#bannerPart, #mottoPart, #methodPart, #popularPart) {
+    position: relative;
+    padding-top: 100px;
+    padding-bottom: 100px;
+    /* background-color: lightgray; */
+}
+
+section img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+}
+
+section #cloudBottom {
+    display: block;
+    position: absolute;
+    width: 100%;
+    top: -20%;
+}
+
+section #cloudTop {
+    display: block;
+    width: 100%;
+    position: absolute;
+    bottom: -15%;
+}
+
+section #partText {
+    display: block;
+    background-color: lightgray;
+    padding: 10px 20px;
+
+    max-width: 100%;
+    max-height: 100%;
+
+    /* width: 400px;
+    position: absolute;
+    top: 15%; */
+
+    font-weight: bolder;
+    border-radius: 10px;
+}
+
+section #partContent {
+    /* position: absolute; */
+    /* top: 20%; */
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 1em;
+    grid-auto-rows: minmax(100px, auto);
+}
+
+.mottoPart,
+.popularPart,
+.methodPart {
+    margin-top: 150px;
+    margin-bottom: 150px;
+}
+
+.bannerPart {
+    position: relative;
+    /* margin-bottom: 150px; */
+}
+
+.mottoPart #mottoContent {
+    background: #d1fafa;
+}
+
+.kanaPart {
+    /* background-color: rgb(211, 211, 211); */
+    padding-top: 100px;
+}
+
+.mottoPart #mottoContent p {
+    font-size: larger;
+}
+
+.methodPart #methodContent p {
+    font-size: x-large;
+}
+
+#popularCard {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 1em;
+    grid-auto-rows: minmax(100px, auto);
+}
+
+.card hr {
+    border-top: 1px solid white;
+}
+
+.card .card-title {
+    font-size: xx-large;
+    margin-bottom: 0;
+}
+
+.card .btn-success {
+    background-color: lightgreen;
+}
+
+/* #popularCard > div {
+    background-color: black;
+} */
+
+footer img {
+    max-width: 100%;
+    max-height: 100%;
+    /* background-color: rgb(211, 211, 211); */
+    object-fit: cover;
+}
+
+footer #footerButton {
+    position: absolute;
+    right: 1px;
+    bottom: 1px;
+    opacity: 0.4;
+}
+
+.bannerPart > img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+}
+
+.bannerPart > #logo {
+    display: block;
+    position: absolute;
+    width: 50%;
+    height: auto;
+    top: 2%;
+    left: 40px;
+}
+
+.bannerPart > #bannerText {
+    display: block;
+    position: absolute;
+    width: 40%;
+    height: auto;
+    top: 25%;
+    left: 30%;
+}
+
+.bannerPart #bannerButton {
+    display: block;
+    position: absolute;
+    width: 30%;
+    height: auto;
+    top: 35%;
+    left: 35%;
+}
+
+.bannerPart #cloudTop {
+    display: block;
+    position: absolute;
+    bottom: -5%;
+}
+
+/* .bannerPart #cloudBottom {
+    display: block;
+    position: absolute;
+    background-color: rgb(211, 211, 211);
+    bottom: -30%;
+} */
+
+.bannerPart #bannerTitle {
+    display: block;
+    position: absolute;
+    bottom: 0%;
+}
+
+.roundedSquare {
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+}
+
+.completeRoundedSquare {
+    border-radius: 20px;
+}
+
+.hoverEffect:hover {
+    opacity: 0.6;
+}
