@@ -6,7 +6,7 @@
         <img src="{{ asset('img/travel_advertising_with_travel_A1_Rectangle_5_pattern@2x.png') }}">
         <img id="logo" src="{{ asset('img/noukenfighter_logo.png') }}" alt="" srcset="">
         <img id="bannerText" src="{{ asset('img/Learn Japanese Easily.png') }}" alt="" srcset="">
-        <a href="#">
+        <a href="/course" class="hoverEffect">
             <img id="bannerButton" src="{{ asset('img/get_started.png') }}"  alt="" srcset="">
         </a>
     </section>
@@ -36,7 +36,7 @@
                     <p class="card-text text-white">This course contain Kanji from JLPT N5 Only</p>
                     <hr>
                     <div class="d-flex justify-content-center">
-                        <a href="#" class="btn btn-success text-white rounded-2 font-weight-bolder">ACCESS</a>
+                        <a href="/course/kanji/N5" class="btn btn-success text-white rounded-2 font-weight-bolder">ACCESS</a>
                     </div>
                 </div>
             </div>
@@ -49,7 +49,7 @@
                     <p class="card-text text-white">This course contain Vocabulary from JLPT N5 Only</p>
                     <hr>
                     <div class="d-flex justify-content-center">
-                        <a href="#" class="btn btn-success text-white rounded-2 font-weight-bolder">ACCESS</a>
+                        <a href="/course/kosakata/N5" class="btn btn-success text-white rounded-2 font-weight-bolder">ACCESS</a>
                     </div>
                 </div>
             </div>
@@ -62,7 +62,7 @@
                     <p class="card-text text-white">This course contain Grammar from JLPT N5 Only</p>
                     <hr>
                     <div class="d-flex justify-content-center">
-                        <a href="#" class="btn btn-success text-white rounded-2 font-weight-bolder">ACCESS</a>
+                        <a href="/course/grammar/N5" class="btn btn-success text-white rounded-2 font-weight-bolder">ACCESS</a>
                     </div>
                 </div>
             </div>

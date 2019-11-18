@@ -61,6 +61,22 @@ section #partText {
     border-radius: 10px;
 }
 
+section #partTextDark {
+    display: block;
+    background-color: black;
+    padding: 10px 20px;
+
+    max-width: 100%;
+    max-height: 100%;
+
+    /* width: 400px;
+    position: absolute;
+    top: 15%; */
+
+    font-weight: bolder;
+    border-radius: 10px;
+}
+
 section #partContent {
     /* position: absolute; */
     /* top: 20%; */
@@ -199,5 +215,53 @@ footer #footerButton {
 }
 
 .hoverEffect:hover {
-    opacity: 0.6;
+    opacity: 0.4;
+}
+
+.op-25 {
+    opacity: 0.25;
+}
+
+.op-50 {
+    opacity: 0.5;
+}
+
+.op-75 {
+    opacity: 0.75;
+}
+
+.hoverAnimation:hover {
+    animation: makeBigger 0.1s;
+    animation-fill-mode: forwards;
+}
+
+.search-container button {
+    /* float: right; */
+    padding: 6px 10px;
+    margin-top: 8px;
+    margin-right: 16px;
+    background: #ddd;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+}
+
+.search-container button:hover {
+    background: #ccc;
+}
+
+@keyframes makeBigger {
+    0% {
+        top: 0px;
+        opacity: 1;
+        /* width: 100px; */
+    }
+
+    100% {
+        top: 20px;
+        left: 20px;
+        opacity: 0.6;
+        /* width: 400px;
+        height: auto; */
+    }
 }

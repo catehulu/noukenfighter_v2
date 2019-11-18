@@ -21,23 +21,29 @@ Route::get('/', function () {
 
 Auth::routes();
 
-
+Route::get('/search', 'KanjiController@search');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/', 'PagesController@home');
 Route::get('/faq', 'PagesController@faq');
 Route::get('/about', 'PagesController@about');
 Route::get('/contact', 'PagesController@contact');
 
+//TEST VIEW
+Route::get('/reviewkana', 'PagesController@reviewkana');
+Route::get('/reviewgrammar', 'PagesController@reviewgrammar');
+Route::get('/reviewvocab', 'PagesController@reviewvocab');
+Route::get('/kanjisrs', 'PagesController@kanjisrs');
+
 Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/quiz', 'PagesController@quiz');
-    Route::get('/search', 'PagesController@search');
+    // Route::get('/search', 'PagesController@search');
     Route::get('/course', 'PagesController@course');
     Route::get('/subscribe', 'PagesController@subscribe');
 
-    Route::get('/search/N{K_JLPT}', 'JLPTController@searchJLPT');
-    Route::get('/search/J{K_Jouyou}', 'JoyouController@searchJouyou');
-    Route::get('/search/{KN_Tipe}', 'KanaController@searchKana');
+    // Route::get('/search/N{K_JLPT}', 'JLPTController@searchJLPT');
+    // Route::get('/search/J{K_Jouyou}', 'JoyouController@searchJouyou');
+    // Route::get('/search/{KN_Tipe}', 'KanaController@searchKana');
 
     //INDEX PERCOURSE
     Route::get('/course/kanji/N{jlpt}', 'JLPTController@kanjiIndex');

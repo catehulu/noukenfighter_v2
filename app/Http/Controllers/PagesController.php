@@ -45,4 +45,26 @@ class PagesController extends Controller
     {
         return view('pages.search');
     }
+
+    //TEST VIEW
+
+    public function reviewkana()
+    {
+        return view('pages.review_kana');
+    }
+
+    public function reviewgrammar()
+    {
+        return view('pages.review_grammar');
+    }
+
+    public function reviewvocab()
+    {
+        return view('pages.review_kosakata');
+    }
+
+    public function kanjisrs()
+    {
+        return view('pages.srs_kanji');
+    }
 }

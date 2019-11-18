@@ -14,14 +14,11 @@
                             {{-- <div class="collapse navbar-collapse" id="navbarCollapse"> --}}
                             <ul class="navbar-nav mr-auto">
                                 <li style="font-weight:400" class="nav-item">
-                                    <a class="nav-link" href="/search">Search</a>
-                                </li>
-                                <li style="font-weight:400" class="nav-item">
                                     <a class="nav-link" href="/course">Course</a>
                                 </li>
-                                <li style="font-weight:400" class="nav-item">
+                                {{-- <li style="font-weight:400" class="nav-item">
                                     <a class="nav-link" href="/quiz">Quiz</a>
-                                </li>
+                                </li> --}}
                             </ul>
                             {{-- </div> --}}
                     </ul>
@@ -39,8 +36,11 @@
                                 </li>
                             @endif
                         @else
-                            <li style="font-weight:bolder" class="nav-item dropdown">
-                                <a href="#" class="btn btn-outline-info">PREMIUM</a>
+                            <li style="font-weight: 400" class="nav-item">
+                                <form action="#" class="nav-link">
+                                    <input type="text" placeholder="Search.." name="search">
+                                    <button type="submit"><i class="fa fa-search"></i></button>
+                                </form>
                             </li>
                             <li style="font-weight:bolder" class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -56,6 +56,10 @@
                                         <a href="/admin/user" class="dropdown-item">User Menu</a>
                                     @endif
 
+                                    <a href="/report" class="dropdown-item bg-info">Progress Report</a>
+                                    {{-- <li style="font-weight:bolder" class="nav-item dropdown"> --}}
+                                    <a href="/subscribe" class="dropdown-item bg-info">Subscription</a>
+                                    {{-- </li> --}}
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
                                                     document.getElementById('logout-form').submit();">

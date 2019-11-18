@@ -40,7 +40,7 @@
                 <h1 class="text-white font-weight-bolder">LEVEL VOCABULARY</h1>
             </div>
             <div class="col-3 p-3 text-center {{$styling}} hoverEffect">
-                <a href="#" class="btn">
+                <a href="/reviewvocab" class="btn">
                     <h1 class="text-white">REVIEW</h1>
                 </a>
             </div>
@@ -64,7 +64,7 @@
         </section>
     </section>
 
-    <h1>Course</h1>
+    {{-- <h1>Course</h1>
     <h3>Welcome to our Course page where you can review some of the words you have learned throughout your journey learning in our website. Each word has a corresponding picture and the details on how to memorize them properly.</h3>
     <br>
     @if(count($kosakatas) >= 1)
@@ -103,5 +103,5 @@
     @else
         <!--p>No KosaKata found</p-->
     @endif
-        </table>
+        </table> --}}
 @endsection

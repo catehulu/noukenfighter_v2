@@ -34,7 +34,7 @@
                 <h1 class="text-white font-weight-bolder text-uppercase">{{$kanas[0]->tipe}}</h1>
             </div>
             <div class="col-3 p-3 text-center bg-gray hoverEffect">
-                <a href="#" class="btn">
+                <a href="/reviewkana" class="btn">
                     <h1 class="text-white">REVIEW</h1>
                 </a>
             </div>
@@ -52,7 +52,7 @@
 
                 <div class="row justify-content-center align-items-center p-5">
                     @foreach($kanas as $kana)
-                    <div class="col-2 bg-gray completeRoundedSquare m-3 hoverEffect" style="height: 100%; width: 100%;">
+                    <div class="col-2 bg-gray completeRoundedSquare m-3 hoverAnimation" style="height: 100%; width: 100%;">
                         <div class="d-flex align-items-center justify-content-center h-100">
                             <form class="text-center" action="/course/kana/detail/{{$kana->id}}">
                                 <button type="submit" class="btn text-white" style="font-size: 80px;">{{$kana->kana}}</button>
@@ -67,7 +67,7 @@
         @endif
     </section>
 
-    <h1>Course</h1>
+    {{-- <h1>Course</h1>
     <h3>Welcome to our Course page where you can review some of the words you have learned throughout your journey learning in our website. Each word has a corresponding picture and the details on how to memorize them properly.</h3>
     <br>
     @if(count($kanas) >= 1)
@@ -111,5 +111,5 @@
     @else
         <!--p>No Kana found</p-->
     @endif
-        </table>
+        </table> --}}
 @endsection

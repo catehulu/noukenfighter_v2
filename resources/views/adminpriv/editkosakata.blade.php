@@ -1,6 +1,17 @@
 @extends('layouts.app')
 
 @section('content')
+    <section class="bannerPart" style="margin-bottom: 100px;">
+        <img src="{{ asset('img/banner_logo.png') }}">
+        <img id="logo" src="{{ asset('img/noukenfighter_logo.png') }}" alt="" srcset="">
+        <img id="cloudTop" src="{{ asset('img/cloud_position_up.png') }}" alt="" srcset="">
+        {{-- <img id="cloudBottom" src="{{ asset('img/cloud_position_down.png') }}" alt="" srcset=""> --}}
+        <div class="row">
+            <div id="bannerTitle" class="text-center col-12">
+                <h1 class="font-weight-bolder">EDIT</h1>
+            </div>
+        </div>
+    </section>
     <h2>Edit Kosa Kata</h2>
     @if($kosaKata)
         <form action="/admin/editKosaKata/{{$kosaKata->id}}" method="post">

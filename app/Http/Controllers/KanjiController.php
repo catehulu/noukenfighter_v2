@@ -18,7 +18,7 @@ class KanjiController extends Controller
      */
     public function index()
     {
-        //  
+        //
     }
 
     /**
@@ -53,7 +53,7 @@ class KanjiController extends Controller
         $kanji->jouyou_id = $request->K_JouYou;
         $kanji->save();
 
-        return redirect('/')->with('success','Insert Kanji Success');
+        return redirect('/')->with('success', 'Insert Kanji Success');
     }
 
     /**
@@ -65,9 +65,9 @@ class KanjiController extends Controller
     public function show(Kanji $kanji)
     {
         // dd($kanji);
-        $data_pembelajaran = DataPembelajaran::where('user_id',Auth::user()->id)->first();
+        $data_pembelajaran = DataPembelajaran::where('user_id', Auth::user()->id)->first();
         $data_srs = $data_pembelajaran->srs()->pluck('kanji_id')->toArray();
-        if (!in_array($kanji->id,$data_srs)) {
+        if (!in_array($kanji->id, $data_srs)) {
             $srs = new SRS();
             $srs->data_pembelajaran_id = $data_pembelajaran->id;
             $srs->kanji_id = $kanji->id;
@@ -75,19 +75,18 @@ class KanjiController extends Controller
             $srs->waktu_review = Carbon::now();
             $srs->save();
 
-            $array_srs = explode(',',$data_pembelajaran->srs_data);
-            array_push($array_srs,$srs->id);
-            $string_srs = implode(',',$array_srs);
+            $array_srs = explode(',', $data_pembelajaran->srs_data);
+            array_push($array_srs, $srs->id);
+            $string_srs = implode(',', $array_srs);
             $data_pembelajaran->srs_data = $string_srs;
             $data_pembelajaran->save();
-        }
-        else{
+        } else {
 
-            $srs = SRS::where('data_pembelajaran_id',$data_pembelajaran->id)->where('kanji_id',$kanji->id)->first();
+            $srs = SRS::where('data_pembelajaran_id', $data_pembelajaran->id)->where('kanji_id', $kanji->id)->first();
             $srs->waktu_review = Carbon::now();
             $srs->save();
         }
-        return view('pages.showcourse_kanji',compact('kanji'));
+        return view('pages.showcourse_kanji', compact('kanji'));
     }
 
     /**
@@ -137,5 +136,12 @@ class KanjiController extends Controller
     {
         $kanji->delete();
         return redirect()->back()->with('success', 'Kanji berhasil dihapus');
+    }
+
+    public function search(Request $request)
+    {
+        var_dump($request->q);
+        $kanji = Kanji::where('kanji', 'like', '%' . $request->q . '%')->first();
+        dd($kanji);
     }
 }

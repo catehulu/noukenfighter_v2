@@ -57,7 +57,7 @@
                 <h1 class="text-white font-weight-bolder">{{$kanjis[0]->jlpt->jlpt_level}}</h1>
             </div>
             <div class="col-3 p-3 text-center {{$styling}} hoverEffect">
-                <a href="#" class="btn">
+                <a href="/kanjisrs" class="btn">
                     <h1 class="text-white">SRS</h1>
                 </a>
             </div>
@@ -89,7 +89,7 @@
 
                 <div class="row justify-content-center align-items-center p-5">
                     @foreach($kanjis as $kanji)
-                    <div class="col-2 {{$styling}} completeRoundedSquare m-3 hoverEffect" style="height: 100%; width: 100%;">
+                    <div class="col-2 {{$styling}} completeRoundedSquare m-3 hoverAnimation">
                         <div class="d-flex align-items-center justify-content-center h-100">
                             <form class="text-center" action="/course/kanji/detail/{{$kanji->id}}">
                                 <button type="submit" class="btn text-white" style="font-size: 80px;">{{$kanji->kanji}}</button>

@@ -40,7 +40,7 @@
                 <h1 class="text-white font-weight-bolder">LEVEL GRAMMAR</h1>
             </div>
             <div class="col-3 p-3 text-center {{$styling}} hoverEffect">
-                <a href="#" class="btn">
+                <a href="/reviewgrammar" class="btn">
                     <h1 class="text-white">REVIEW</h1>
                 </a>
             </div>
