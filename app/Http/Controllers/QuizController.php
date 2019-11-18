@@ -132,112 +132,112 @@ class QuizController extends Controller
         
     }
 
-    public function quizKanji($jlpt) {
-        $data_pembelajaran = DataPembelajaran::where('user_id',Auth::user()->id)->first();
-        if ($data_pembelajaran->current_quiz) {
-            $quiz = Quiz::find($data_pembelajaran->current_quiz);
+    // public function quizKanji($jlpt) {
+    //     $data_pembelajaran = DataPembelajaran::where('user_id',Auth::user()->id)->first();
+    //     if ($data_pembelajaran->current_quiz) {
+    //         $quiz = Quiz::find($data_pembelajaran->current_quiz);
     
-            $quizs = array(
-                'data_soal' => json_decode($quiz->data_soal),
-                'data_jawaban' => json_decode($quiz->data_jawaban),
-                'kunci_jawaban' => json_decode($quiz->kunci_jawaban),
-                'keterangan' => $quiz->keterangan
-            );
+    //         $quizs = array(
+    //             'data_soal' => json_decode($quiz->data_soal),
+    //             'data_jawaban' => json_decode($quiz->data_jawaban),
+    //             'kunci_jawaban' => json_decode($quiz->kunci_jawaban),
+    //             'keterangan' => $quiz->keterangan
+    //         );
 
-            // dd($quizs);
-            return view('pages.attemptquiz',compact('quizs'));
-        }else {
-            $data_srs_array = explode(',',$data_pembelajaran->srs_data);
-            $data_srs = SRS::whereIn('id',$data_srs_array)->pluck('kanji_id')->toArray();
-            $all_kanji = JLPT::find($jlpt)->kanji()->pluck('id')->toArray();
-            $number_randomizer_all = range(0, count($all_kanji));
-            $number_randomizer_known = range(0, count($data_srs));
-            $fixed_question = array();
-            $fixed_answer = array();
-            $fixed_choices = array();
+    //         // dd($quizs);
+    //         return view('pages.attemptquiz',compact('quizs'));
+    //     }else {
+    //         $data_srs_array = explode(',',$data_pembelajaran->srs_data);
+    //         $data_srs = SRS::whereIn('id',$data_srs_array)->pluck('kanji_id')->toArray();
+    //         $all_kanji = JLPT::find($jlpt)->kanji()->pluck('id')->toArray();
+    //         $number_randomizer_all = range(0, count($all_kanji));
+    //         $number_randomizer_known = range(0, count($data_srs));
+    //         $fixed_question = array();
+    //         $fixed_answer = array();
+    //         $fixed_choices = array();
 
-            $temp_nra = $number_randomizer_all;
-            $temp_nrk = $number_randomizer_known;
-            $n = 0;
-            while ($n < 5 && count($data_srs) > 0) {
-                $choices_array = array();
-                // var_dump($data_srs);
-                $random = mt_rand(0,count($data_srs)-1);
-                array_push($fixed_question,$data_srs[$random]);
-                array_push($fixed_answer,$data_srs[$random]);
-                array_push($choices_array,$data_srs[$random]);
-                unset($data_srs[$random]);
-                $data_srs = array_values($data_srs);
-                while (count($choices_array) < 4) {
-                    $random = mt_rand(0,  count($all_kanji)-1);
-                    if (!in_array($all_kanji[$random],$choices_array)) {
-                        array_push($choices_array,$all_kanji[$random]);
-                    }
-                }
-                array_push($fixed_choices,$choices_array);
-                $n = $n+1;
-            }
-            $n = 0;
-            while ($n < 5 && count($all_kanji)) {
-                $choices_array = array();
-                $random = mt_rand(0,count($all_kanji)-1);
-                if (!in_array($all_kanji[$random],$fixed_question)) {
-                    array_push($fixed_question,$all_kanji[$random]);
-                    array_push($fixed_answer,$all_kanji[$random]);
-                    array_push($choices_array,$all_kanji[$random]);
-                    unset($all_kanji[$random]);
-                    $all_kanji = array_values($all_kanji);
-                    while (count($choices_array) < 4) {
-                        $random = mt_rand(0, count($all_kanji)-1);
-                        if (!in_array($all_kanji[$random],$choices_array)) {
-                            array_push($choices_array,$all_kanji[$random]);
-                        }
-                    }
-                    array_push($fixed_choices,$choices_array);
-                    $n = $n+1;
-                }
-            }
+    //         $temp_nra = $number_randomizer_all;
+    //         $temp_nrk = $number_randomizer_known;
+    //         $n = 0;
+    //         while ($n < 5 && count($data_srs) > 0) {
+    //             $choices_array = array();
+    //             // var_dump($data_srs);
+    //             $random = mt_rand(0,count($data_srs)-1);
+    //             array_push($fixed_question,$data_srs[$random]);
+    //             array_push($fixed_answer,$data_srs[$random]);
+    //             array_push($choices_array,$data_srs[$random]);
+    //             unset($data_srs[$random]);
+    //             $data_srs = array_values($data_srs);
+    //             while (count($choices_array) < 4) {
+    //                 $random = mt_rand(0,  count($all_kanji)-1);
+    //                 if (!in_array($all_kanji[$random],$choices_array)) {
+    //                     array_push($choices_array,$all_kanji[$random]);
+    //                 }
+    //             }
+    //             array_push($fixed_choices,$choices_array);
+    //             $n = $n+1;
+    //         }
+    //         $n = 0;
+    //         while ($n < 5 && count($all_kanji)) {
+    //             $choices_array = array();
+    //             $random = mt_rand(0,count($all_kanji)-1);
+    //             if (!in_array($all_kanji[$random],$fixed_question)) {
+    //                 array_push($fixed_question,$all_kanji[$random]);
+    //                 array_push($fixed_answer,$all_kanji[$random]);
+    //                 array_push($choices_array,$all_kanji[$random]);
+    //                 unset($all_kanji[$random]);
+    //                 $all_kanji = array_values($all_kanji);
+    //                 while (count($choices_array) < 4) {
+    //                     $random = mt_rand(0, count($all_kanji)-1);
+    //                     if (!in_array($all_kanji[$random],$choices_array)) {
+    //                         array_push($choices_array,$all_kanji[$random]);
+    //                     }
+    //                 }
+    //                 array_push($fixed_choices,$choices_array);
+    //                 $n = $n+1;
+    //             }
+    //         }
 
-            $final_question = array();
-            $final_answer = array();
-            $final_choices = array();
+    //         $final_question = array();
+    //         $final_answer = array();
+    //         $final_choices = array();
 
-            $quiz = new Quiz();
-            $quiz->keterangan = 'Kanji';
-            $quiz->data_pembelajaran_id = $data_pembelajaran->id;
-            foreach ($fixed_question as $key => $kanji_id) {
-                $choices = array();
-                $kanji = Kanji::find($kanji_id);
-                array_push($final_question,$kanji->kanji);
-                array_push($final_answer,$kanji->keyword);
-                array_push($choices,$kanji->keyword);
-                for ($i=1; $i < 4; $i++) { 
-                    $choice = Kanji::find($fixed_choices[$key][$i]);
-                    array_push($choices,$choice->keyword);
-                }
-                shuffle($choices);
-                array_push($final_choices,$choices);
-            }
+    //         $quiz = new Quiz();
+    //         $quiz->keterangan = 'Kanji';
+    //         $quiz->data_pembelajaran_id = $data_pembelajaran->id;
+    //         foreach ($fixed_question as $key => $kanji_id) {
+    //             $choices = array();
+    //             $kanji = Kanji::find($kanji_id);
+    //             array_push($final_question,$kanji->kanji);
+    //             array_push($final_answer,$kanji->keyword);
+    //             array_push($choices,$kanji->keyword);
+    //             for ($i=1; $i < 4; $i++) { 
+    //                 $choice = Kanji::find($fixed_choices[$key][$i]);
+    //                 array_push($choices,$choice->keyword);
+    //             }
+    //             shuffle($choices);
+    //             array_push($final_choices,$choices);
+    //         }
 
-            $quiz->data_soal = json_encode($final_question);
-            $quiz->data_jawaban = json_encode($final_choices);
-            $quiz->kunci_jawaban = json_encode($final_answer);
-            $quiz->save();
+    //         $quiz->data_soal = json_encode($final_question);
+    //         $quiz->data_jawaban = json_encode($final_choices);
+    //         $quiz->kunci_jawaban = json_encode($final_answer);
+    //         $quiz->save();
 
             
-            $data_pembelajaran->current_quiz = $quiz->id;
-            $data_pembelajaran->save();
+    //         $data_pembelajaran->current_quiz = $quiz->id;
+    //         $data_pembelajaran->save();
 
-            $quizs = array(
-                'data_soal' => json_decode($quiz->data_soal),
-                'data_jawaban' => json_decode($quiz->data_jawaban),
-                'kunci_jawaban' => json_decode($quiz->kunci_jawaban),
-                'keterangan' => $quiz->keterangan
-            );
+    //         $quizs = array(
+    //             'data_soal' => json_decode($quiz->data_soal),
+    //             'data_jawaban' => json_decode($quiz->data_jawaban),
+    //             'kunci_jawaban' => json_decode($quiz->kunci_jawaban),
+    //             'keterangan' => $quiz->keterangan
+    //         );
 
-            return view('pages.attemptquiz',compact('quizs'));
-        }
-    }
+    //         return view('pages.attemptquiz',compact('quizs'));
+    //     }
+    // }
 
     
 
